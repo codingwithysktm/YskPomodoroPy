@@ -1,5 +1,12 @@
 import os
 import time
+def plus():
+    
+    a = open("yskpomodoropy.yskpomodoro","a")
+    a.write("""+""")
+    
+
+
 class pomodoro:
     muzik1 = ""
     muzik2 = ""
@@ -9,6 +16,95 @@ class pomodoro:
     tenefussure = 0
     baslik = ""
     pp = ""
+    def elmas(self):
+        e = open("yskpomodoropy.yskpomodoro","r")
+        elmas = str(len(e.read())+1)
+        kode = """<head>
+    <style>
+        body{
+            background-color: black;
+            
+        
+        }
+        p{
+            text-shadow: 0.2px 0.2px 0.2px ;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            scrollbar-shadow-color: gold;
+            color: blue;
+            font-size: 500%;
+        }
+    </style>
+</head>
+
+<body onload="draw();">
+    <div id="u">
+        <canvas id="canvas" width="1000" height="250"></canvas>
+
+    </div>
+    <p>"""+elmas+""" Elmasa sahipsiniz</p>
+    
+    <script>
+        function draw() {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext){
+    var ctx = canvas.getContext('2d');
+    var x=650; var y=100;
+    var w=200; var h=200;
+    colors=['#3366CC','#003399','#333399'];
+    sketch(x,y,w,h,ctx,colors);
+  }
+}
+
+ function sketch(x,y,w,h,ctx,colors){
+    ctx.fillStyle=colors[0];
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x+w/2,y+0.7*h);
+    ctx.lineTo(x+w/2,y);
+    ctx.fill();
+    
+    ctx.fillStyle=colors[1];
+    ctx.beginPath();
+    ctx.moveTo(x+w/2, y);
+    ctx.lineTo(x+w/2,y+0.7*h);
+    ctx.lineTo(x+w,y);
+    ctx.fill();
+    
+    
+    ctx.beginPath();
+    ctx.moveTo(x+w/4,y-0.3*h);
+    ctx.lineTo(x,y);
+    ctx.lineTo(x+w/2,y);
+    ctx.fill();
+    
+    
+    ctx.fillStyle=colors[2];
+    ctx.beginPath();
+    ctx.moveTo(x+w/4,y-0.3*h);
+    ctx.lineTo(x+w/2,y);
+    ctx.lineTo(x+0.75*w,y-0.3*h);
+    ctx.fill();
+    
+   
+    ctx.fillStyle=colors[0];
+    ctx.beginPath();
+    ctx.moveTo(x+0.75*w,y-0.3*h);
+    ctx.lineTo(x+w/2,y);
+    ctx.lineTo(x+w,y);
+    ctx.fill();
+
+ }
+ draw()
+ sketch()
+
+</script>
+</body>
+"""
+        s = open("elmaslar.html","w")
+        s.write(kode)
+        os.startfile("elmaslar.html")
+        
     def basla(self):
         ss = time.time()
         derssure = str(self.derssure)
@@ -60,6 +156,25 @@ class pomodoro:
     <style>
         html{
             height: 100%;
+        }
+        button{
+            padding: 7px 7px;
+            font-size: 10px;
+            color: aquamarine;
+            background-color: black;
+            font-family: 'Times New Roman', Times, serif;
+            transition: 1s;
+            opacity: 0.7; 
+            
+        }
+        button:hover{
+            font-size: 13px;
+            color: green;
+            background-color: aquamarine;
+            scrollbar-shadow-color: aquamarine;
+            box-shadow: 0.5px 0.5px 0.5px 0.5px,1px 1px 1px 1px,1.5px 1.5px 1.5px 1.5px;
+            opacity: 1;
+            font-style: bold;
         }
         
         body{
@@ -124,6 +239,9 @@ class pomodoro:
     </style>
 </head>
 <body>
+    <input type="color" name="" id="cl">
+    <button onclick="cl()">RENK AYARLA</button>
+
     <div class="a">
         <h1 class="aktif" id="c">Ders Vakti</h1>
         <h1 class="pasif" id="m">Mola Vakti</h1>
@@ -194,6 +312,10 @@ class pomodoro:
             sayac.innerHTML = s;
         }
         setInterval(f,1000);
+        function cl(){
+            var cl = document.getElementById("cl").value;
+            document.body.style.backgroundColor = cl;
+        }
 
 
     </script"""+""">  
@@ -286,10 +408,31 @@ class pomodoro:
             font-family: sans-serif;
 
         }
+        button{
+            padding: 7px 7px;
+            font-size: 10px;
+            color: aquamarine;
+            background-color: black;
+            font-family: 'Times New Roman', Times, serif;
+            transition: 1s;
+            opacity: 0.7; 
+            
+        }
+        button:hover{
+            font-size: 13px;
+            color: green;
+            background-color: aquamarine;
+            scrollbar-shadow-color: aquamarine;
+            box-shadow: 0.5px 0.5px 0.5px 0.5px,1px 1px 1px 1px,1.5px 1.5px 1.5px 1.5px;
+            opacity: 1;
+            font-style: bold;
+        }
         
     </style>
 </head>
 <body>
+    <input type="color" name="" id="cl">
+    <button onclick="cl()">RENK AYARLA</button>
     
     <h1 class="aktif" id="c">Ders Vakti</h1>
     <h1 class="pasif" id="m">Mola Vakti</h1>
@@ -360,6 +503,10 @@ class pomodoro:
             sayac.innerHTML = s;
         }
         setInterval(f,1000);
+        function cl(){
+            var cl = document.getElementById("cl").value;
+            document.body.style.backgroundColor = cl;
+        }
 
 
     </script"""
@@ -397,7 +544,7 @@ class pomodoro:
         yd.write(kod)
         os.startfile("yskpomodoro.html")
         print(("Pomodoro başarıyla oluşturuldu Oluşturulma süresi : "+str((time.time()-ss))+"sn"))
-        
+        plus()
 
 
 def ypomodoro(derssure,tenefussure):
@@ -443,6 +590,25 @@ def ypomodoro(derssure,tenefussure):
             text-shadow: 1px 1px 5px rgb(57, 71, 82);
             font-size : 225%
         }
+        button{
+            padding: 7px 7px;
+            font-size: 10px;
+            color: aquamarine;
+            background-color: black;
+            font-family: 'Times New Roman', Times, serif;
+            transition: 1s;
+            opacity: 0.7; 
+            
+        }
+        button:hover{
+            font-size: 13px;
+            color: green;
+            background-color: aquamarine;
+            scrollbar-shadow-color: aquamarine;
+            box-shadow: 0.5px 0.5px 0.5px 0.5px,1px 1px 1px 1px,1.5px 1.5px 1.5px 1.5px;
+            opacity: 1;
+            font-style: bold;
+        }
         .aktif{
             text-shadow:1px 1px 15px rgb(255, 160, 160);
             color:rgb(255, 0, 0);
@@ -468,6 +634,8 @@ def ypomodoro(derssure,tenefussure):
     </style>
 </head>
 <body>
+    <input type="color" name="" id="cl">
+    <button onclick="cl()">RENK AYARLA</button>
     
     <h1 class="aktif" id="c">Ders Vakti</h1>
     <h1 class="pasif" id="m">Mola Vakti</h1>
@@ -538,6 +706,10 @@ def ypomodoro(derssure,tenefussure):
             sayac.innerHTML = s;
         }
         setInterval(f,1000);
+        function cl(){
+            var cl = document.getElementById("cl").value;
+            document.body.style.backgroundColor = cl;
+        }
 
 
     </script>
@@ -548,6 +720,7 @@ def ypomodoro(derssure,tenefussure):
     yd = open("yskpomodoro.html","w")
     yd.write(kod)
     os.startfile("yskpomodoro.html")
+   
     
     
     print(("Pomodoro başarıyla oluşturuldu Oluşturulma süresi : "+str((time.time()-ss))+"sn"))
@@ -571,6 +744,25 @@ def hazirpomodoro():
         body{
             height: 100%;
             background-color: aquamarine;
+        }
+        button{
+            padding: 7px 7px;
+            font-size: 10px;
+            color: aquamarine;
+            background-color: black;
+            font-family: 'Times New Roman', Times, serif;
+            transition: 1s;
+            opacity: 0.7; 
+            
+        }
+        button:hover{
+            font-size: 13px;
+            color: green;
+            background-color: aquamarine;
+            scrollbar-shadow-color: aquamarine;
+            box-shadow: 0.5px 0.5px 0.5px 0.5px,1px 1px 1px 1px,1.5px 1.5px 1.5px 1.5px;
+            opacity: 1;
+            font-style: bold;
         }
         .a{
             
@@ -620,6 +812,8 @@ def hazirpomodoro():
     </style>
 </head>
 <body>
+    <input type="color" name="" id="cl">
+    <button onclick="cl()">RENK AYARLA</button>
     
     <h1 class="aktif" id="c">Ders Vakti</h1>
     <h1 class="pasif" id="m">Mola Vakti</h1>
@@ -646,7 +840,10 @@ def hazirpomodoro():
         var sayi = 0;
 
         var yapilanders = "Toplam ders : " + calisilanderssayisi + "   Toplam ders (dk): "+(calisilanderssayisi*calismasure)+" dk ";
-
+        function cl(){
+            var cl = document.getElementById("cl").value;
+            document.body.style.backgroundColor = cl;
+        }
         function dt(){
             dakika = dakikat;
             calisma.className = "pasif";
@@ -723,6 +920,7 @@ def bilgi():
      5)derssure ders suresini giriniz
      6)tenefussure tenefus suresini girin
      7)basla projeyi baslatır
+     8)elmas yazarak simdiye kadar kaç kez çalıştırdığınızı görüntüleyebilirsiniz
      *!projede baslik pp video muzik vb. isteğe bağlıdır girmeseniz de olur
      
     bilgi:proje hakkında bilgi verir""")
